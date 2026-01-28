@@ -3,13 +3,21 @@ const {expect} = require("@playwright/test");
 class CartPage {
     constructor(page) {
         this.page=page;
-        this.buttonCheckout="//button[contains(@class,'btn_action')]";
+        this.checkoutButton="//button[@data-test='checkout']";
+        this.continueShoppingButton = "//button[@data-test='continue-shopping']";
+        this.cartItem = "//div[@class='cart_item']";
+    }
+
+    async expectItemInCart(itemname) {
+        await expect(this.page.locator(this.cartItem).filter({hasText: itemname})).toBeVisible();
     }
 
     async goToCheckout(itemname) {
-        const itemXpath = `//div[@class='cart_item'][.//div[normalize-space()='${itemname}']]`
-        await expect(this.page.locator(itemXpath)).toBeVisible();
-        await this.page.click(this.buttonCheckout);
+        await this.page.click(this.checkoutButton);
+    }
+
+    async goToContinueShopping () {
+        await this.page.click(this.continueShoppingButton);
     }
 }
 

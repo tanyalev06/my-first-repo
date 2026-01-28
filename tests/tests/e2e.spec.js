@@ -33,7 +33,7 @@ test('Добавление товара в корзину и переход в �
     await expect(page).toHaveURL('https://www.saucedemo.com/cart.html');
 })
 
-test ('Проверка товара в корзине', async ({page}) => {
+test ('Проверка товара в корзине и переход к оформлению заказа', async ({page}) => {
     const loginPage = new LoginPage(page);
     const inventoryPage = new InventoryPage(page);
     const cartPage = new CartPage(page);
@@ -41,5 +41,6 @@ test ('Проверка товара в корзине', async ({page}) => {
     await loginPage.login('standard_user', 'secret_sauce');
     await inventoryPage.addItemToCart('Sauce Labs Fleece Jacket');
     await inventoryPage.openCart();
-    await cartPage.goToCheckout('Sauce Labs Fleece Jacket');
+    await cartPage.expectItemInCart('Sauce Labs Fleece Jacket');
+    await cartPage.goToCheckout();
 })
