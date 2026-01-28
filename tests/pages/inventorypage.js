@@ -9,10 +9,11 @@ class InventoryPage {
         this.shoppingcardlink = "//a[@class='shopping_cart_link']";
     }
 
-    async addItemToCart(itemname) {
-        await this.page.click(this.addtocartbutton);
-        await this.page.goto('https://www.saucedemo.com/cart');
+    async addItemToCart(itemName) {
+        const addToCartButton = `//div[@class='inventory_item'][.//div[normalize-space()='${itemName}']]//button`;
+        await this.page.click(addToCartButton);
     }
+
 
     async openCart() {
         await this.page.click(this.shoppingcardlink);

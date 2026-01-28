@@ -1,6 +1,7 @@
 const { test, expect } = require ('@playwright/test');
 const LoginPage = require("../pages/loginpage");
 const InventoryPage = require("../pages/inventorypage");
+const CartPage = require("../pages/cartpage");
 
 test('Успешный логин и проверка страницы товаров', async ({ page}) => {
     const loginPage = new LoginPage(page);
@@ -28,6 +29,17 @@ test('Добавление товара в корзину и переход в �
     await loginPage.login('standard_user', 'secret_sauce');
     await inventoryPage.getPageTitle();
     await inventoryPage.addItemToCart('Sauce Labs Fleece Jacket');
-    await inventoryPage.openCart;
-    await expect(page).toHaveURL('https://www.saucedemo.com/cart');
+    await inventoryPage.openCart();
+    await expect(page).toHaveURL('https://www.saucedemo.com/cart.html');
+})
+
+test ('Проверка товара в корзине', async ({page}) => {
+    const loginPage = new LoginPage(page);
+    const inventoryPage = new InventoryPage(page);
+    const cartPage = new CartPage(page);
+    await loginPage.open();
+    await loginPage.login('standard_user', 'secret_sauce');
+    await inventoryPage.addItemToCart('Sauce Labs Fleece Jacket');
+    await inventoryPage.openCart();
+    await cartPage.goToCheckout('Sauce Labs Fleece Jacket');
 })
