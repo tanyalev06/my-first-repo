@@ -3,13 +3,13 @@
 - node_modules/
 - tests/
 - pages
--- loginpage.js
--- inventorypage.js
--- cartpage.js
--- checkoutsteponepage.js
--- checkoutsteptwopage.js
--- checkoutcompletepage.js
-- e2e.spec.js — E2E-тесты
+ - loginpage.js
+ - inventorypage.js
+ - cartpage.js
+ - checkoutsteponepage.js
+ - checkoutsteptwopage.js
+ - checkoutcompletepage.js
+- e2e.spec.js
 - package.json
 - package-lock.json
 - playwright.config.js
