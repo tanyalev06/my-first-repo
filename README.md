@@ -9,7 +9,8 @@
     - checkoutsteponepage.js
     - checkoutsteptwopage.js
     - checkoutcompletepage.js
-- e2e.spec.js
+  - e2e.spec.js
+- gitignore
 - package.json
 - package-lock.json
 - playwright.config.js
