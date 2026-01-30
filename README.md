@@ -1,4 +1,16 @@
-# Мой первый проект
-Привет! Меня зовут Татьяна. Я учусь пользоваться Git и GitHub.
-Я люблю изучать новые технологии.
-# Контакты
+## Структура my-first-repo
+- .github/
+- node_modules/
+- tests/
+- pages
+-- loginpage.js
+-- inventorypage.js
+-- cartpage.js
+-- checkoutsteponepage.js
+-- checkoutsteptwopage.js
+-- checkoutcompletepage.js
+- e2e.spec.js — E2E-тесты
+- package.json
+- package-lock.json
+- playwright.config.js
+- README.md
