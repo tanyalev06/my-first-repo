@@ -6,6 +6,7 @@ on:
 jobs:
   run-tests:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
     
@@ -21,25 +22,16 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run UI tests
-        run: npm run tests:ui -- --reporter=html,outputFolder=playwright-report-ui
+        run: npm run tests:ui
 
       - name: Run API tests
-        run: npm run tests:api -- --reporter=html,outputFolder=playwright-report-api
+        run: npm run tests:api
 
       - name: Upload UI test report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report-ui
-          path: playwright-report-ui/
+          name: playwright-report
+          path: playwright-report
           retention-days: 7
-
-      - name: Upload API test report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report-api
-          path: playwright-report-api/
-          retention-days: 7
-
 
