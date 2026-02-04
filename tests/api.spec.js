@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
 
-test.describe('API-тесты для Restful-broker', () => {
+test.describe('@api API-тесты для Restful-broker', () => {
 
     test.describe.configure({mode: 'serial'});
 
@@ -20,7 +20,7 @@ test.describe('API-тесты для Restful-broker', () => {
     };
 
     //CREATE
-    test ('Создание нового бронирования', async ({request}) => {
+    test ('@api Создание нового бронирования', async ({request}) => {
         // Отправляем POST-запрос на создание брони
         const response = await request.post(`${baseURL}/booking`, {
             data: bookingData
@@ -50,7 +50,7 @@ test.describe('API-тесты для Restful-broker', () => {
     });
 
     //READ
-    test ('Получение информации о бронировании', async ({request}) => {
+    test ('@api Получение информации о бронировании', async ({request}) => {
         const response = await request.get(`${baseURL}/booking/${bookingID}`/*, {
             headers: {
                 Accept: 'application/json'
@@ -75,7 +75,7 @@ test.describe('API-тесты для Restful-broker', () => {
     })
     
     //UPDATE
-    test ('Обновление бронирования', async ({request}) => {
+    test ('@api Обновление бронирования', async ({request}) => {
         //Получение токена авторизации
         const authResponse = await request.post(`${baseURL}/auth`, {
             data: {
@@ -112,7 +112,7 @@ test.describe('API-тесты для Restful-broker', () => {
         expect(responseBody.totalprice).toBe(updateBooking.totalprice);
     });
 
-    test ('Удаление бронирования', async ({request}) => {
+    test ('@api Удаление бронирования', async ({request}) => {
         // Отправляем DELETE запрос с токеном
         const response = await request.delete(`${baseURL}/booking/${bookingID}`, {
              headers: { Cookie: `token=${authToken}` }

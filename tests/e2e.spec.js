@@ -6,7 +6,7 @@ const CheckoutStepOnePage = require("./pages/checkoutsteponepage");
 const CheckoutStepTwoPage = require("./pages/checkoutsteptwopage");
 const CheckoutCompletePage = require("./pages/checkoutcompletepage");
 
-test('Проверка работы с корзиной заказов от логина до совершения заказа', async ({ page}) => {
+test('@ui Проверка работы с корзиной заказов от логина до совершения заказа', async ({ page}) => {
     const loginPage = new LoginPage(page);
     const inventoryPage = new InventoryPage(page);
     const cartPage = new CartPage(page);
