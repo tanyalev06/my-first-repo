@@ -21,10 +21,10 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run UI tests
-        run: npm run tests:ui -- --outputFolder=playwright-report-ui
+        run: npm run tests:ui -- --reporter=html --reporter-options outputFolder=playwright-report-ui
 
       - name: Run API tests
-        run: npm run tests:api -- --outputFolder=playwright-report-api
+        run: npm run tests:api -- --reporter=html --reporter-options outputFolder=playwright-report-api
 
       - name: Upload UI test report
         if: always()
